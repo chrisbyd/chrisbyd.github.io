@@ -340,10 +340,21 @@
 <ol start="2">
 <li><p>Set \(y=0\) , which equals to\(f(x_0)+f’(x_0)(x-x_0)=0\)and we can get the following iterative optimization equation<br>$$x=x_0 - \frac{f(x_0)}{f’(x_0)}$$</p>
 </li>
-<li><p>By employ the above equation, we can approximate the root of the function //(f(x)=0//) after sufficient iterations.  The <strong>Newton’s Method</strong> is graphically depicted in the picture below.<br><img src="optimization-2/newton.png" alt="newton"> </p>
+<li><p>By employ the above equation, we can approximate the root of the function \(f(x)=0\) after sufficient iterations.  The <strong>Newton’s Method</strong> is graphically depicted in the picture below.<br><img src="/images/newton.png" alt="newton"> </p>
 </li>
 </ol>
-<h3 id="Newton’s-method-for-optimization"><a href="#Newton’s-method-for-optimization" class="headerlink" title="Newton’s method for optimization"></a>Newton’s method for optimization</h3>
+<h3 id="Newton’s-method-for-optimization"><a href="#Newton’s-method-for-optimization" class="headerlink" title="Newton’s method for optimization"></a>Newton’s method for optimization</h3><p>If we want to minimize a function, say \(f(x)\) instead of searching for the roots of the function. Intuitively, we can employ <strong>Newton’s Method</strong> on the gradient of the function \(f(x)\) since the minimum of the function \(f(x)\) is achieved when the gradient of the function equals to \(0\).</p>
+<ul>
+<li>We first get the second order <strong>Taylor Expansion</strong> of the function \(f(x)\) at the initial point \(x_0\). Suppose the function is multi-variant.</li>
+</ul>
+<p>$$f(x)=f(x_0)+\nabla f(x_0)(x-x_0)+ \frac{1}{2}(x-x_0)^T \nabla^2 f(x_0) (x-x_0)$$</p>
+<p>\(\nabla^2 f(x_0)\) is the <strong>Hessian Matrix</strong> or <strong>Fisher information matrix)</strong> of \(f(x)\) at \(x_0\). </p>
+<ul>
+<li>then  we need to apply <strong>Newton’s Method</strong> to find the root of \(\nabla f(x) =0\), which equals to the following :<br>$$\nabla f(x_0)+\nabla^2 f(x_0)(x-x_0)=0$$<br>Then , we can derive the iterative update equation as <strong> \(x_1=x_0 - \frac{\nabla f(x_0)}{\nabla^2 f(x_0)}\) </strong></li>
+</ul>
+<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h3><h4 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h4><p>The convergence speed is way faster than <strong>Steepest Gradient Descent</strong>.</p>
+<h4 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>Need to compute the Hessian, which is rather compuation-intensive. </p>
+
         </div>
         
           
@@ -354,7 +365,7 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-09T14:29:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-09T15:42:40+08:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>last updated at May 9, 2019</p>
@@ -598,7 +609,7 @@
 </header>
 
     <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Newton’s-method"><span class="toc-text">Newton’s method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deduction"><span class="toc-text">Deduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Newton’s-method-for-optimization"><span class="toc-text">Newton’s method for optimization</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Newton’s-method"><span class="toc-text">Newton’s method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deduction"><span class="toc-text">Deduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Newton’s-method-for-optimization"><span class="toc-text">Newton’s method for optimization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Discussion"><span class="toc-text">Discussion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Advantages"><span class="toc-text">Advantages</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Disadvantages"><span class="toc-text">Disadvantages</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
