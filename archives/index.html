@@ -258,7 +258,7 @@
 	              <time>05-07</time>
 	              <span class="title">
 	                
-	                  optimization_2
+	                  Optimization methods(2)
 	                
 	                
 	                
@@ -448,7 +448,7 @@
 </header>
 
     <div class="content pure">
-      <a href="/tags/diary-phd-life/" style="font-size: 14px; color: #999">diary, phd life</a> <a href="/tags/machine-learning-optimization/" style="font-size: 24px; color: #555">machine learning, optimization</a>
+      <a href="/tags/diary-phd-life/" style="font-size: 14px; color: #999">diary, phd life</a> <a href="/tags/machine-learning-optimization/" style="font-size: 14px; color: #999">machine learning, optimization</a> <a href="/tags/machine-learning-unconstrained-optimization/" style="font-size: 14px; color: #999">machine learning, unconstrained optimization</a>
     </div>
   </section>
 
@@ -543,6 +543,43 @@
 
 	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
 	
+
+	
+	    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX","TeX"],
+      linebreaks: { automatic:true },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+      Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+  });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += (all[i].SourceElement().parentNode.className ? ' ' : '') + 'has-jax';
+    }
+  });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
 	
 

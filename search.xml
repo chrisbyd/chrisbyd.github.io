@@ -8,7 +8,7 @@
       <link href="/2019/05/07/Diary/"/>
       <url>/2019/05/07/Diary/</url>
       
-        <content type="html"><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="Welcome to my diary, enter password to enter." />    <label for="pass">Welcome to my diary, enter password to enter.</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">U2FsdGVkX19NbdjGj/7yYSRpZnkdOUyCYd1rlcJXk3Gbf2x81CfX7tuaQHRsTcIQZTNK9qSUvpc+Spqc36f+ZPVPF+HIZR/TstS2TtFYtdtxxb/o/IpuuiyLbFEOxiew2Uc9n7gwBEl/cEAIRjc8CNjHBW+YkJNdfKmO7jWNi6s=</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+        <content type="html"><![CDATA[<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="Welcome to my diary, enter password to enter." />    <label for="pass">Welcome to my diary, enter password to enter.</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">U2FsdGVkX1/FchqlQ83WhoI+pBjTFUf0CkH6XWZsAr3VckMxp2d5g3kR6XAuTBVn+EM5JUZrzYkQdRIe0Ad9g9pyvq3ydzvWf7dfQPxsMU1D2/cWaBOutmjSJafgh7z2kjbgOosapgbV6bf4/LwYnMRmwriuxIbi9U+WqPSWSAY=</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       
       
       <categories>
@@ -29,11 +29,11 @@
     
     
     <entry>
-      <title>optimization_2</title>
+      <title>Optimization methods(2)</title>
       <link href="/2019/05/07/optimization-2/"/>
       <url>/2019/05/07/optimization-2/</url>
       
-        <content type="html"><![CDATA[<p>This is the second post to the general optimization methods. In this post, I will briefly talk about <strong><em>Newton’s method</em></strong> .</p><h2 id="Newton’s-method"><a href="#Newton’s-method" class="headerlink" title="Newton’s method"></a>Newton’s method</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>In numerical analysis, Newton’s method, also known as the <strong>Newton–Raphson method</strong>, named after Isaac Newton and Joseph Raphson, is a root-finding algorithm which produces successively better approximations to the roots (or zeroes) of a real-valued function.</p>]]></content>
+        <content type="html"><![CDATA[<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><p>This is the second post to the general optimization methods. In this post, I will briefly talk about <strong><em>Newton’s method</em></strong> .</p><h2 id="Newton’s-method"><a href="#Newton’s-method" class="headerlink" title="Newton’s method"></a>Newton’s method</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote><p>In numerical analysis, Newton’s method, also known as the <strong>Newton–Raphson method</strong>, named after Isaac Newton and Joseph Raphson, is a root-finding algorithm which produces successively better approximations to the roots (or zeroes) of a real-valued function.</p></blockquote><h3 id="Deduction"><a href="#Deduction" class="headerlink" title="Deduction"></a>Deduction</h3><p>Suppose we have a function \(f(x)\) which is real and differentiable. We want to find the solutiont to \(f(x)=0\). Lets suppose we have an initial guess for the solution, say \(x_0\). The initial guess is not that satisfactory but we can use it to iteratively get a more accurate guess. Below is the deduction process.</p><ol><li>We first use <strong>Taylor Expansion</strong> to get the fist order expansion of \(f(x)\)</li></ol><p>$$y=f(x_0)+f’(x_0)(x-x_0)$$</p><ol start="2"><li><p>Set \(y=0\) , which equals to\(f(x_0)+f’(x_0)(x-x_0)=0\)and we can get the following iterative optimization equation<br>$$x=x_0 - \frac{f(x_0)}{f’(x_0)}$$</p></li><li><p>By employ the above equation, we can approximate the root of the function //(f(x)=0//) after sufficient iterations.  The <strong>Newton’s Method</strong> is graphically depicted in the picture below.<br><img src="optimization-2/newton.png" alt="newton"> </p></li></ol><h3 id="Newton’s-method-for-optimization"><a href="#Newton’s-method-for-optimization" class="headerlink" title="Newton’s method for optimization"></a>Newton’s method for optimization</h3>]]></content>
       
       
       <categories>
@@ -45,7 +45,7 @@
       
         <tags>
             
-            <tag> machine learning, optimization </tag>
+            <tag> machine learning, unconstrained optimization </tag>
             
         </tags>
       

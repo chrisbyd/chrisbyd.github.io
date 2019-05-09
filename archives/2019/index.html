@@ -363,7 +363,7 @@
         
   <h2 class="title">
     <a href="/2019/05/07/optimization-2/">
-      optimization_2
+      Optimization methods(2)
     </a>
   </h2>
 
@@ -430,15 +430,30 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>This is the second post to the general optimization methods. In this post, I will briefly talk about <strong><em>Newton’s method</em></strong> .</p>
-<h2 id="Newton’s-method"><a href="#Newton’s-method" class="headerlink" title="Newton’s method"></a>Newton’s method</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>In numerical analysis, Newton’s method, also known as the <strong>Newton–Raphson method</strong>, named after Isaac Newton and Joseph Raphson, is a root-finding algorithm which produces successively better approximations to the roots (or zeroes) of a real-valued function.</p>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
+<p>This is the second post to the general optimization methods. In this post, I will briefly talk about <strong><em>Newton’s method</em></strong> .</p>
+<h2 id="Newton’s-method"><a href="#Newton’s-method" class="headerlink" title="Newton’s method"></a>Newton’s method</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>In numerical analysis, Newton’s method, also known as the <strong>Newton–Raphson method</strong>, named after Isaac Newton and Joseph Raphson, is a root-finding algorithm which produces successively better approximations to the roots (or zeroes) of a real-valued function.</p>
+</blockquote>
+<h3 id="Deduction"><a href="#Deduction" class="headerlink" title="Deduction"></a>Deduction</h3><p>Suppose we have a function \(f(x)\) which is real and differentiable. We want to find the solutiont to \(f(x)=0\). Lets suppose we have an initial guess for the solution, say \(x_0\). The initial guess is not that satisfactory but we can use it to iteratively get a more accurate guess. Below is the deduction process.</p>
+<ol>
+<li>We first use <strong>Taylor Expansion</strong> to get the fist order expansion of \(f(x)\)</li>
+</ol>
+<p>$$y=f(x_0)+f’(x_0)(x-x_0)$$</p>
+<ol start="2">
+<li><p>Set \(y=0\) , which equals to\(f(x_0)+f’(x_0)(x-x_0)=0\)and we can get the following iterative optimization equation<br>$$x=x_0 - \frac{f(x_0)}{f’(x_0)}$$</p>
+</li>
+<li><p>By employ the above equation, we can approximate the root of the function //(f(x)=0//) after sufficient iterations.  The <strong>Newton’s Method</strong> is graphically depicted in the picture below.<br><img src="optimization-2/newton.png" alt="newton"> </p>
+</li>
+</ol>
+<h3 id="Newton’s-method-for-optimization"><a href="#Newton’s-method-for-optimization" class="headerlink" title="Newton’s method for optimization"></a>Newton’s method for optimization</h3>
       
     </div>
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/machine-learning-optimization/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>machine learning, optimization</a>
+          <a href="/tags/machine-learning-unconstrained-optimization/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>machine learning, unconstrained optimization</a>
         
       </div>
     
@@ -571,6 +586,43 @@
     
     <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
     
+    
+      <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX","TeX"],
+      linebreaks: { automatic:true },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+      Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+  });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += (all[i].SourceElement().parentNode.className ? ' ' : '') + 'has-jax';
+    }
+  });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
     
 
   
@@ -739,7 +791,7 @@
 </header>
 
     <div class="content pure">
-      <a href="/tags/diary-phd-life/" style="font-size: 14px; color: #999">diary, phd life</a> <a href="/tags/machine-learning-optimization/" style="font-size: 24px; color: #555">machine learning, optimization</a>
+      <a href="/tags/diary-phd-life/" style="font-size: 14px; color: #999">diary, phd life</a> <a href="/tags/machine-learning-optimization/" style="font-size: 14px; color: #999">machine learning, optimization</a> <a href="/tags/machine-learning-unconstrained-optimization/" style="font-size: 14px; color: #999">machine learning, unconstrained optimization</a>
     </div>
   </section>
 
@@ -834,6 +886,43 @@
 
 	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
 	
+
+	
+	    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX","TeX"],
+      linebreaks: { automatic:true },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+      Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+  });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += (all[i].SourceElement().parentNode.className ? ' ' : '') + 'has-jax';
+    }
+  });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
 	
 
