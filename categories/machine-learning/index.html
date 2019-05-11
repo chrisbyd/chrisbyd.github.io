@@ -241,9 +241,269 @@
         
           
         
+          
+        
+          
+        
       
     
     
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/05/11/Optimization-4/">
+      Optimization_4
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Chris</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class="new-meta-item category">
+    <a href="/categories/machine-learning/" rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>machine learning</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<p>In this post, I will give a brief introduction on another popular optimization method - <strong><em>trust region optimization method</em></strong>.</p>
+
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/machine-learning-unconstrained-optimization/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>machine learning, unconstrained optimization</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/05/09/Optimization-3/">
+      Optimization methods(3)
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Chris</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-09</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class="new-meta-item category">
+    <a href="/categories/machine-learning/" rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>machine learning</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<p>In this post, I will talk about another optimzation method which is called <strong><em>Conjugate gradient descent</em></strong>. The reason for the induction here is that <strong><em>CG</em></strong> method is employed in reinforcement learning but is not well explained in most blogs and books. I have read quite a lot descriptions from various </p>
+<h2 id="Conjugate-Gradient-Descent"><a href="#Conjugate-Gradient-Descent" class="headerlink" title="Conjugate Gradient Descent"></a>Conjugate Gradient Descent</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><blockquote>
+<p><strong>Conjugate gradient descent</strong> is a prominent iterative method for solving sparse systems of linear equations. It basically optimizes the function in the order of \(N\) A-orthogonal search directions. Intuitively, it minimizes the function along one direction \(d\) to the point where the subsequent minimization steps will never need to minimize over that direction again.</p>
+</blockquote>
+<h3 id="Conjugacy"><a href="#Conjugacy" class="headerlink" title="Conjugacy"></a>Conjugacy</h3><ul>
+<li><strong>Conjugation definition</strong></li>
+</ul>
+<blockquote>
+<p>Suppose A is a \(n*n\) positive definite matrix. \(d^1\) and \(d^2\) are two directions in \(R^n\) which satisfy the following equation:<br>$$d^1Ad^2=0$$<br>Then these two directions are called conjugate directions of \(A\).</p>
+</blockquote>
+<ul>
+<li><strong>Conjugate optimization</strong></li>
+</ul>
+<p>Steepest gradient descent as we all know will take the zigzag path in the optimization process. It will take steps in the direction which has been taken before. Wouldnt it be better if every time we take a step, we have arrived at a poistion where we never would need to step in that direction again. The idea is demonstrated as follows.) </p>
+<ol>
+<li>Pick a set of orthogonal <em>search directions</em> \(d_0,d_1, …., d_{n-1}\)</li>
+<li><p>In each direction, we take exactly one step to minimize the function.</p>
+<p>$$x_{i+1}=x_i+\alpha_i d_i$$</p>
+</li>
+</ol>
+<p>We denote the <em>error item</em> after \(i-1\) iterations as \(e_i\), as illustrated in the above picture. To find the value of \(\alpha_i\) , use the fact that \(e_{i+1}\) should be orthogonal to \(d_i\), so that we never step in the direction of \(d_i\) again.  Then, we have</p>
+<p>  $$<br>  \begin{split}<br>   d_i^Te_{i+1}=0  \\<br>   d_i^T(e_i+\alpha_id_i)=0 \\<br>   \alpha_i =- \frac{d_i^Te_i}{d_i^Td_i}<br>  \end{split}<br>  $$</p>
+<ol start="3">
+<li><p>After n steps, we achieve the minimum.</p>
+<p>However, the problem is not solved since we dont know about \(e_i\) in advance. Now we relax the <em>orthogonal</em> condition to <em>A-orthogonal,conjugate</em> ,which, as stated before, means that $d_i^TAd_j=0$.</p>
+</li>
+</ol>
+<p><img src="/images/Conjugate1.png" alt="Conjugate directions"><br>We set the directional derivative to zero:</p>
+<p>$$<br>\begin{split}<br>  \frac{d}{d\alpha}f(x_{i+1}) \\<br>  f’(x_{i+1})^T\frac{d}{d\alpha}x_{i+1} =0 \\<br>  -r_{i+1}^Td_i =0<br>\end{split}<br>$$</p>
+<p>$$ d_i^TAe_{i+1} =0$$<br>Then, here is the expression for $\alpha_i$ when the search directions are <em>A_orthogonal(Conjugate)</em>:<br>$$<br>\begin{align}<br>\alpha_i= -\frac{d_i^TAe_i}{d_i^TAd_i} \<br>        = \frac{d_i^Tr_i}{d_i^TAd_i}<br>\end{align}<br>$$<br>Note that if the search vectors are just the residuals, this formula would be identical to the <em>steepest Descent</em>.<br>To prove this procedure indeed compute x in $n$ steps, we can express the error item as a linear combination of search directions since the search directions are a complete span of the entire search space; namely:</p>
+<p>$$e_0 = \sum_{j=0}^{n-1}\delta_j d(j)$$</p>
+<p>The corresponding values of each $\delta_i$ can be computed using the fact that the search directions are <em>conjugate</em>. We premultiply the above expression by $d_k^TA$:</p>
+<p>$$<br>\begin{align}<br>d_k^TAe_0=\sum_j\delta_j d_k^TAd_j \\<br>d_k^TAe_0=\delta_k d_k^TAd_k  \\<br>  \delta_k= \frac{d_k^TAe_0}{d_k^TAd_k} \\<br>  =\frac{d_k^TA(e_0+\sum_{i=0}^{k-1}\alpha_i d_i)}{d_k^TAd_k} \\<br>  =\frac{d_k^TAe_k}{d_k^TAd_k} \\<br>\end{align}<br>$$<br>By the above equation, we find that $\alpha_i =-\delta_i$. As the following equation shows, the process of building up x component by component can also be viewed as cutting down the error term component by component. See the following Figure.</p>
+<p>$$<br>\begin{align}<br>e_i = e_0+\sum_{j=0}^{i-1}\alpha_j d_j \\<br>    = \sum_{j=0}^{n-1}\delta_j d_j - \sum_{j=0}^{i-1}\delta_j d_j \\<br>    =\sum_{j=i}^{n-1}\delta_j d_j \\<br>\end{align}<br>$$</p>
+<p>After n iterations, every error term is cut away, and $e_n=0$; the proof is complete. </p>
+<p><img src="/images/Conjugate2.png" alt></p>
+<ul>
+<li><strong>Conjugate directions</strong><br>According to the above demonstration, we have a clear idea about the conjugate optimization. The key point is how to find a set of <em>conjugate directions</em> $d_i$. We will briefly go through a commmon method to tackle this headache which is called <strong>conjugate Gram-Schmidt</strong> process.<br>Suppose we have a set of n linearly independent vectors $u_0,u_1,…,u_{n-1}$. To construct $d_i$, take $u_i$ and substract out any component that are not conjugate to the previous $d$ vectors. See the following fig.<br><img src="/images/Conjugate3.png" alt><br>In other words, set $d_0=u_0$, and for $i&gt;0$, set</li>
+</ul>
+<p>$$d_i=u_i + \sum_{k=0}^{i-1}\beta_{ik} d_k$$</p>
+<p>where the $\beta_{ik}$ are defined for $i&gt;k$. To figure out their values, we employ the same trick for finding $\delta_j$, namely: </p>
+<p>$$<br>\begin{align}<br> d_i^TAd_j = u_i^TAd_j +\sum_{k=0}^{i-1}\beta_{ik} d_k^TAd_j \\<br> 0 = u_i^TAd_j +\beta_ {ij}d_j^TAd_j \\<br> \beta_{ij} = -\frac{u_i^TAd_j}{d_j^TAd_j}<br>\end{align}<br>$$<br>The weakness of this method lies in the fact that all old search directions need to be kept in memory to contruct a new direction. </p>
+<h3 id="Conjugate-gradient-method"><a href="#Conjugate-gradient-method" class="headerlink" title="Conjugate gradient method"></a><font color="#dd0000">Conjugate gradient method</font><br></h3><p>According to the above demonstration, we need to find a set of independent vectors. In this section, I will demonstrate the <strong>Conjugate gradient method</strong> way to deal with all of these issues. However, since the detailed proof of the intrinsics of the algorithm is too length, I will skip the proof and get hands on the algorithm directly. </p>
+<ul>
+<li><p>Get the first direction $d_0 = r_0 =b -Ax_0$</p>
+</li>
+<li><p>Compute the step size in that direction which is $$\alpha_i = \frac { r_i^Tr_i }{ d_i^TAd_i }$$</p>
+</li>
+<li><p>Get the position of next point $x_{i+1} = x_i +\alpha_i d_i$</p>
+</li>
+<li><p>Compute the gradient (residual) at $x_{i+1}$ which equals $r_{i+1} = r_i-\alpha_i Ad_i$</p>
+</li>
+<li><p>Compute the coefficient of $d_i$, namely $$\beta_{i+1} = \frac{r_{i+1}^Tr_{i+1}}{r_i^Tr_i}$$</p>
+</li>
+<li><p>Get the next search direction $d_{i+1} = r_{i+1} + \beta_{i+1} d_i$</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/machine-learning-unconstrained-optimization/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>machine learning, unconstrained optimization</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class="post-wrapper">
@@ -352,8 +612,8 @@
 <ul>
 <li>then  we need to apply <strong>Newton’s Method</strong> to find the root of \(\nabla f(x) =0\), which equals to the following :<br>$$\nabla f(x_0)+\nabla^2 f(x_0)(x-x_0)=0$$<br>Then , we can derive the iterative update equation as <strong> \(x_1=x_0 - \frac{\nabla f(x_0)}{\nabla^2 f(x_0)}\) </strong></li>
 </ul>
-<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h3><h4 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h4><p>The convergence speed is way faster than <strong>Steepest Gradient Descent</strong>.</p>
-<h4 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>Need to compute the Hessian, which is rather compuation-intensive. </p>
+<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a><strong>Discussion</strong></h3><h4 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h4><p>The convergence speed is way faster than <strong>Steepest Gradient Descent</strong>.</p>
+<h4 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>Need to compute the Hessian, which is rather compuation-intensive. Meanwhile, it relys on the second order Taylor expansion to approximate the original function. Thus, the scenario may happen where the quadratic approximation function.  </p>
 
       
     </div>
@@ -675,7 +935,7 @@
         
           <li><a class="flat-box" title="/categories/life/" href="/categories/life/"><div class="name">life</div><div class="badge">(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/machine-learning/" href="/categories/machine-learning/"><div class="name">machine learning</div><div class="badge">(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/machine-learning/" href="/categories/machine-learning/"><div class="name">machine learning</div><div class="badge">(4)</div></a></li>
         
       </ul>
     </div>
@@ -700,7 +960,7 @@
 </header>
 
     <div class="content pure">
-      <a href="/tags/diary-phd-life/" style="font-size: 14px; color: #999">diary, phd life</a> <a href="/tags/machine-learning-optimization/" style="font-size: 14px; color: #999">machine learning, optimization</a> <a href="/tags/machine-learning-unconstrained-optimization/" style="font-size: 14px; color: #999">machine learning, unconstrained optimization</a>
+      <a href="/tags/diary-phd-life/" style="font-size: 14px; color: #999">diary, phd life</a> <a href="/tags/machine-learning-optimization/" style="font-size: 14px; color: #999">machine learning, optimization</a> <a href="/tags/machine-learning-unconstrained-optimization/" style="font-size: 24px; color: #555">machine learning, unconstrained optimization</a>
     </div>
   </section>
 

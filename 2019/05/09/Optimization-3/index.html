@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Tag: diary, phd life | Chris</title>
+  <title>Optimization methods(3) | Chris</title>
   
   
   <meta name="description" content="This is the place for chris to write down his daily feelings and some technical articles">
@@ -46,7 +46,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class="cover  half">
+    <cover class="cover post half">
       
         
   <h1 class="title">Oooooops! Get away from me!</h1>
@@ -228,25 +228,12 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      
-<div class="l_main">
+      <div class="l_main">
   
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class="post-wrapper">
-            <article class="post reveal ">
+
   
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class="meta">
@@ -255,11 +242,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2019/05/07/Diary/">
-      Diary
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2019/05/09/Optimization-3/">
+        Optimization methods(3)
+      </a>
+    </h1>
+  
 
 
       
@@ -285,7 +274,7 @@
             <div class="new-meta-item date">
   <a class="notlink">
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-05-07</p>
+    <p>2019-05-09</p>
   </a>
 </div>
 
@@ -295,9 +284,9 @@
             
   
   <div class="new-meta-item category">
-    <a href="/categories/life/" rel="nofollow">
+    <a href="/categories/machine-learning/" rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>life</p>
+      <p>machine learning</p>
     </a>
   </div>
 
@@ -306,6 +295,19 @@
         
           
             
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class="notlink">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
 
           
         
@@ -322,44 +324,260 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      The article has been encrypted, please enter your password to view.<br>
-      
-        <div class="readmore">
-          <a href="/2019/05/07/Diary/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            Read More
-          </a>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<p>In this post, I will talk about another optimzation method which is called <strong><em>Conjugate gradient descent</em></strong>. The reason for the induction here is that <strong><em>CG</em></strong> method is employed in reinforcement learning but is not well explained in most blogs and books. I have read quite a lot descriptions from various </p>
+<h2 id="Conjugate-Gradient-Descent"><a href="#Conjugate-Gradient-Descent" class="headerlink" title="Conjugate Gradient Descent"></a>Conjugate Gradient Descent</h2><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><blockquote>
+<p><strong>Conjugate gradient descent</strong> is a prominent iterative method for solving sparse systems of linear equations. It basically optimizes the function in the order of \(N\) A-orthogonal search directions. Intuitively, it minimizes the function along one direction \(d\) to the point where the subsequent minimization steps will never need to minimize over that direction again.</p>
+</blockquote>
+<h3 id="Conjugacy"><a href="#Conjugacy" class="headerlink" title="Conjugacy"></a>Conjugacy</h3><ul>
+<li><strong>Conjugation definition</strong></li>
+</ul>
+<blockquote>
+<p>Suppose A is a \(n*n\) positive definite matrix. \(d^1\) and \(d^2\) are two directions in \(R^n\) which satisfy the following equation:<br>$$d^1Ad^2=0$$<br>Then these two directions are called conjugate directions of \(A\).</p>
+</blockquote>
+<ul>
+<li><strong>Conjugate optimization</strong></li>
+</ul>
+<p>Steepest gradient descent as we all know will take the zigzag path in the optimization process. It will take steps in the direction which has been taken before. Wouldnt it be better if every time we take a step, we have arrived at a poistion where we never would need to step in that direction again. The idea is demonstrated as follows.) </p>
+<ol>
+<li>Pick a set of orthogonal <em>search directions</em> \(d_0,d_1, …., d_{n-1}\)</li>
+<li><p>In each direction, we take exactly one step to minimize the function.</p>
+<p>$$x_{i+1}=x_i+\alpha_i d_i$$</p>
+</li>
+</ol>
+<p>We denote the <em>error item</em> after \(i-1\) iterations as \(e_i\), as illustrated in the above picture. To find the value of \(\alpha_i\) , use the fact that \(e_{i+1}\) should be orthogonal to \(d_i\), so that we never step in the direction of \(d_i\) again.  Then, we have</p>
+<p>  $$<br>  \begin{split}<br>   d_i^Te_{i+1}=0  \\<br>   d_i^T(e_i+\alpha_id_i)=0 \\<br>   \alpha_i =- \frac{d_i^Te_i}{d_i^Td_i}<br>  \end{split}<br>  $$</p>
+<ol start="3">
+<li><p>After n steps, we achieve the minimum.</p>
+<p>However, the problem is not solved since we dont know about \(e_i\) in advance. Now we relax the <em>orthogonal</em> condition to <em>A-orthogonal,conjugate</em> ,which, as stated before, means that $d_i^TAd_j=0$.</p>
+</li>
+</ol>
+<p><img src="/images/Conjugate1.png" alt="Conjugate directions"><br>We set the directional derivative to zero:</p>
+<p>$$<br>\begin{split}<br>  \frac{d}{d\alpha}f(x_{i+1}) \\<br>  f’(x_{i+1})^T\frac{d}{d\alpha}x_{i+1} =0 \\<br>  -r_{i+1}^Td_i =0<br>\end{split}<br>$$</p>
+<p>$$ d_i^TAe_{i+1} =0$$<br>Then, here is the expression for $\alpha_i$ when the search directions are <em>A_orthogonal(Conjugate)</em>:<br>$$<br>\begin{align}<br>\alpha_i= -\frac{d_i^TAe_i}{d_i^TAd_i} \<br>        = \frac{d_i^Tr_i}{d_i^TAd_i}<br>\end{align}<br>$$<br>Note that if the search vectors are just the residuals, this formula would be identical to the <em>steepest Descent</em>.<br>To prove this procedure indeed compute x in $n$ steps, we can express the error item as a linear combination of search directions since the search directions are a complete span of the entire search space; namely:</p>
+<p>$$e_0 = \sum_{j=0}^{n-1}\delta_j d(j)$$</p>
+<p>The corresponding values of each $\delta_i$ can be computed using the fact that the search directions are <em>conjugate</em>. We premultiply the above expression by $d_k^TA$:</p>
+<p>$$<br>\begin{align}<br>d_k^TAe_0=\sum_j\delta_j d_k^TAd_j \\<br>d_k^TAe_0=\delta_k d_k^TAd_k  \\<br>  \delta_k= \frac{d_k^TAe_0}{d_k^TAd_k} \\<br>  =\frac{d_k^TA(e_0+\sum_{i=0}^{k-1}\alpha_i d_i)}{d_k^TAd_k} \\<br>  =\frac{d_k^TAe_k}{d_k^TAd_k} \\<br>\end{align}<br>$$<br>By the above equation, we find that $\alpha_i =-\delta_i$. As the following equation shows, the process of building up x component by component can also be viewed as cutting down the error term component by component. See the following Figure.</p>
+<p>$$<br>\begin{align}<br>e_i = e_0+\sum_{j=0}^{i-1}\alpha_j d_j \\<br>    = \sum_{j=0}^{n-1}\delta_j d_j - \sum_{j=0}^{i-1}\delta_j d_j \\<br>    =\sum_{j=i}^{n-1}\delta_j d_j \\<br>\end{align}<br>$$</p>
+<p>After n iterations, every error term is cut away, and $e_n=0$; the proof is complete. </p>
+<p><img src="/images/Conjugate2.png" alt></p>
+<ul>
+<li><strong>Conjugate directions</strong><br>According to the above demonstration, we have a clear idea about the conjugate optimization. The key point is how to find a set of <em>conjugate directions</em> $d_i$. We will briefly go through a commmon method to tackle this headache which is called <strong>conjugate Gram-Schmidt</strong> process.<br>Suppose we have a set of n linearly independent vectors $u_0,u_1,…,u_{n-1}$. To construct $d_i$, take $u_i$ and substract out any component that are not conjugate to the previous $d$ vectors. See the following fig.<br><img src="/images/Conjugate3.png" alt><br>In other words, set $d_0=u_0$, and for $i&gt;0$, set</li>
+</ul>
+<p>$$d_i=u_i + \sum_{k=0}^{i-1}\beta_{ik} d_k$$</p>
+<p>where the $\beta_{ik}$ are defined for $i&gt;k$. To figure out their values, we employ the same trick for finding $\delta_j$, namely: </p>
+<p>$$<br>\begin{align}<br> d_i^TAd_j = u_i^TAd_j +\sum_{k=0}^{i-1}\beta_{ik} d_k^TAd_j \\<br> 0 = u_i^TAd_j +\beta_ {ij}d_j^TAd_j \\<br> \beta_{ij} = -\frac{u_i^TAd_j}{d_j^TAd_j}<br>\end{align}<br>$$<br>The weakness of this method lies in the fact that all old search directions need to be kept in memory to contruct a new direction. </p>
+<h3 id="Conjugate-gradient-method"><a href="#Conjugate-gradient-method" class="headerlink" title="Conjugate gradient method"></a><font color="#dd0000">Conjugate gradient method</font><br></h3><p>According to the above demonstration, we need to find a set of independent vectors. In this section, I will demonstrate the <strong>Conjugate gradient method</strong> way to deal with all of these issues. However, since the detailed proof of the intrinsics of the algorithm is too length, I will skip the proof and get hands on the algorithm directly. </p>
+<ul>
+<li><p>Get the first direction $d_0 = r_0 =b -Ax_0$</p>
+</li>
+<li><p>Compute the step size in that direction which is $$\alpha_i = \frac { r_i^Tr_i }{ d_i^TAd_i }$$</p>
+</li>
+<li><p>Get the position of next point $x_{i+1} = x_i +\alpha_i d_i$</p>
+</li>
+<li><p>Compute the gradient (residual) at $x_{i+1}$ which equals $r_{i+1} = r_i-\alpha_i Ad_i$</p>
+</li>
+<li><p>Compute the coefficient of $d_i$, namely $$\beta_{i+1} = \frac{r_{i+1}^Tr_{i+1}}{r_i^Tr_i}$$</p>
+</li>
+<li><p>Get the next search direction $d_{i+1} = r_{i+1} + \beta_{i+1} d_i$</p>
+</li>
+</ul>
+
         </div>
+        
+          
+
+
+  <section class="meta" id="footer-meta">
+    <hr>
+    <div class="new-meta-box">
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-11T14:02:08+08:00">
+  <a class="notlink">
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>last updated at May 11, 2019</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/machine-learning-unconstrained-optimization/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>machine learning, unconstrained optimization</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/05/09/Optimization-3/&title=Optimization methods(3) | Chris&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2019/05/09/Optimization-3/&title=Optimization methods(3) | Chris&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/05/09/Optimization-3/&title=Optimization methods(3) | Chris&summary=">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
       
     </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/diary-phd-life/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>diary, phd life</a>
-        
-      </div>
-    
   </section>
-</article>
 
-          </div>
+
         
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
+                            <h4>
+                                <a href="/2019/05/11/Optimization-4/" rel="prev" title="Optimization_4">
+                                  
+                                      Optimization_4
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/machine-learning-unconstrained-optimization/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>machine learning, unconstrained optimization</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/05/07/Diary/" rel="prev" title="Diary">
+                                    
+                                        Diary
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/diary-phd-life/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>diary, phd life</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Comments</h4>
       
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+        <section id="comments">
+          <div id="disqus_thread">
+            <div><i class="fas fa-exclamation-triangle">&nbsp;Unable to load Disqus, please make sure your network can access.</i></div>
+          </div>
+        </section>
+      
+      
+      
+      
+    </section>
+  </article>
+
 
   
 
 
-    
-  
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+  <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX","TeX"],
+      linebreaks: { automatic:true },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+      Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+  });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += (all[i].SourceElement().parentNode.className ? ' ' : '') + 'has-jax';
+    }
+  });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+
+
+  <script>
+    window.subData = {
+      title: 'Optimization methods(3)',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class="l_side">
   
@@ -412,6 +630,20 @@
           
           
             
+  <section class="widget toc-wrapper">
+    
+<header class="pure">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;TOC</div>
+  
+    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class="content pure">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Conjugate-Gradient-Descent"><span class="toc-text">Conjugate Gradient Descent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Definition"><span class="toc-text">Definition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conjugacy"><span class="toc-text">Conjugacy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conjugate-gradient-method"><span class="toc-text">Conjugate gradient method</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
 
           
         
@@ -670,6 +902,20 @@
 
 
 
+
+  <script>
+    var disqus_shortname = 'chrisbyd';
+    
+      var disqus_url = 'http://yoursite.com/2019/05/09/Optimization-3/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
 
 
 
