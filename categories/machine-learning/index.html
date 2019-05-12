@@ -245,6 +245,8 @@
         
           
         
+          
+        
       
     
     
@@ -262,8 +264,108 @@
       
         
   <h2 class="title">
+    <a href="/2019/05/12/Langrange/">
+      Langrange Multipliers for Constrained Optimization
+    </a>
+  </h2>
+
+
+      
+      <div class="new-meta-box">
+        
+          
+        
+          
+            
+  <div class="new-meta-item author">
+    <a href="http://yoursite.com" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>Chris</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class="notlink">
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class="new-meta-item category">
+    <a href="/categories/machine-learning/" rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>machine learning</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h2 id="We-have-gone-through-a-few-optimization-methods-for-unconstrained-optimization-However-in-reality-tremendous-problems-in-real-life-are-factored-into-a-serires-of-constrained-optimization-problems-Therefore-in-this-post-I-will-mainly-introduce-a-widely-employed-method-in-various-machine-learning-algorithms"><a href="#We-have-gone-through-a-few-optimization-methods-for-unconstrained-optimization-However-in-reality-tremendous-problems-in-real-life-are-factored-into-a-serires-of-constrained-optimization-problems-Therefore-in-this-post-I-will-mainly-introduce-a-widely-employed-method-in-various-machine-learning-algorithms" class="headerlink" title="We have gone through a few optimization methods for unconstrained optimization. However, in reality, tremendous problems in real life are factored into a serires of constrained optimization problems. Therefore, in this post, I will mainly introduce a widely employed method in various machine learning algorithms."></a>We have gone through a few optimization methods for unconstrained optimization. However, in reality, tremendous problems in real life are factored into a serires of constrained optimization problems. Therefore, in this post, I will mainly introduce a widely employed method in various machine learning algorithms.</h2><h2 id="Langrange-Multiplier"><a href="#Langrange-Multiplier" class="headerlink" title="Langrange Multiplier"></a>Langrange Multiplier</h2><p>###Intrduction </p>
+
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/machine-learning-unconstrained-optimization/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>machine learning, unconstrained optimization</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class="post-wrapper">
+            <article class="post reveal ">
+  
+
+
+  <section class="meta">
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2019/05/11/Optimization-4/">
-      Optimization_4
+      Optimization methods(4)
     </a>
   </h2>
 
@@ -332,7 +434,12 @@
     <div class="article-entry" itemprop="articleBody">
       <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-<p>In this post, I will give a brief introduction on another popular optimization method - <strong><em>trust region optimization method</em></strong>.</p>
+<p>In this post, I will give a brief introduction on another popular optimization method - <strong><em>trust region optimization method</em></strong>. In the last few posts, I elaborated on <em>line search</em>, <em>steepest gradient descent</em> and <em>newton’s method</em>. However,both the optimized steepest gradient descent and newton’s method are based on the assumption that the objective function can be approximated locally by a quadratic function. However, it fails to approximate the objective function ,the descent may leads to the convergence problem as the following two pics show.</p>
+<p><figure class="half"><br>    <img src="/images/Trustregion1.png"><br>    <img src="/images/Trustregion2.png"><br></figure></p>
+<h2 id="To-address-this-problem-we-will-introduce-trust-region-method-in-this-post"><a href="#To-address-this-problem-we-will-introduce-trust-region-method-in-this-post" class="headerlink" title="To address this problem, we will introduce trust region method in this post."></a>To address this problem, we will introduce <strong>trust region method</strong> in this post.</h2><h2 id="Trust-region-methods"><a href="#Trust-region-methods" class="headerlink" title="Trust region methods"></a>Trust region methods</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><font color="red"><strong>Introduction</strong></font></h3><blockquote>
+<p>Trust-region method (TRM) is one of the most important numerical optimization methods in solving nonlinear programming (NLP) problems. It works in a way that first define a region around the current best solution, in which a certain model (usually a quadratic model) can to some extent approximate the original objective function. TRM then take a step forward according to the model depicts within the region. Unlike the line search methods, TRM usually determines the step size before the improving direction (or at the same time). If a notable decrease (our following discussion will based on minimization problems) is gained after the step forward, then the model is believed to be a good representation of the original objective function. If the improvement is too subtle or even a negative improvement is gained, then the model is not to be believed as a good representation of the original objective function within that region. The convergence can be ensured that the size of the “trust region” (usually defined by the radius in Euclidean norm) in each iteration would depend on the improvement previously made.</p>
+</blockquote>
+<h3 id="Deduction"><a href="#Deduction" class="headerlink" title="Deduction"></a><font color="red"><strong>Deduction</strong></font></h3><p>Consider the unconstrained problem:<br>$$min\;f(x), x \in \mathbb{R}^n$$<br>We compute the second order <strong>Taylor expansion</strong> approximation of the objective at point $x_k$ ,namely:<br>$$f(x)\approx f(x_k)+\nabla f(x_k)^T(x-x_k)+\frac{1}{2}\nabla^2f(x_k)(x-x_k)^2$$<br>Denote $d=x-x_k$, we have the quadratic function:<br>$$\phi_k(d)=f(x_k)+\nabla f(x_k)^Td +\frac{1}{2}d^T\nabla^2 f(x_k)d$$<br>To accurately approximate $f(x_k+d)$ with $\phi_k(d)$ in the vicinity of $x_k$, we enforce constraints on $d$ with $\left|d\right|d \leq r_k$. $r_k$ is a given constant which in this setting is widely referred to as the <strong>trust region radius</strong>. The constraint on $d$ could be various kinds of norms according to different settings. In this post, we will focus on the method which enforces <em>Ecludian norm</em> on $d$, which means $(d^Td)^{\frac{1}{2}}\leq r_k$.<br>If $d_k$ is the optimum solution to the objective, then, there exits a mutiplier $w \geq 0$ satisfying<br>$$ \nabla^2 f(x_k)d_k +\nabla f(x_k) +\frac{w’}{d_k^Td_k}d_k = 0$$<br>$$ w’(\left||d_k\right||-r_k) = 0)$$<br>Denote $$w=\frac{}$$</p>
 
       
     </div>
@@ -935,7 +1042,7 @@
         
           <li><a class="flat-box" title="/categories/life/" href="/categories/life/"><div class="name">life</div><div class="badge">(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/machine-learning/" href="/categories/machine-learning/"><div class="name">machine learning</div><div class="badge">(4)</div></a></li>
+          <li><a class="flat-box" title="/categories/machine-learning/" href="/categories/machine-learning/"><div class="name">machine learning</div><div class="badge">(5)</div></a></li>
         
       </ul>
     </div>

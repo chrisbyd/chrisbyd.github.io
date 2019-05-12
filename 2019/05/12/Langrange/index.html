@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Optimization methods(2) | Chris</title>
+  <title>Langrange Multipliers for Constrained Optimization | Chris</title>
   
   
   <meta name="description" content="This is the place for chris to write down his daily feelings and some technical articles">
@@ -244,8 +244,8 @@
         
   
     <h1 class="title">
-      <a href="/2019/05/07/optimization-2/">
-        Optimization methods(2)
+      <a href="/2019/05/12/Langrange/">
+        Langrange Multipliers for Constrained Optimization
       </a>
     </h1>
   
@@ -274,7 +274,7 @@
             <div class="new-meta-item date">
   <a class="notlink">
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-05-07</p>
+    <p>2019-05-12</p>
   </a>
 </div>
 
@@ -328,32 +328,7 @@
         <div class="article-entry" itemprop="articleBody">
           <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-<p>This is the second post to the general optimization methods. In this post, I will briefly talk about <strong><em>Newton’s method</em></strong> .</p>
-<h2 id="Newton’s-method"><a href="#Newton’s-method" class="headerlink" title="Newton’s method"></a>Newton’s method</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
-<p>In numerical analysis, Newton’s method, also known as the <strong>Newton–Raphson method</strong>, named after Isaac Newton and Joseph Raphson, is a root-finding algorithm which produces successively better approximations to the roots (or zeroes) of a real-valued function.</p>
-</blockquote>
-<h3 id="Deduction"><a href="#Deduction" class="headerlink" title="Deduction"></a>Deduction</h3><p>Suppose we have a function \(f(x)\) which is real and differentiable. We want to find the solutiont to \(f(x)=0\). Lets suppose we have an initial guess for the solution, say \(x_0\). The initial guess is not that satisfactory but we can use it to iteratively get a more accurate guess. Below is the deduction process.</p>
-<ol>
-<li>We first use <strong>Taylor Expansion</strong> to get the fist order expansion of \(f(x)\)</li>
-</ol>
-<p>$$y=f(x_0)+f’(x_0)(x-x_0)$$</p>
-<ol start="2">
-<li><p>Set \(y=0\) , which equals to\(f(x_0)+f’(x_0)(x-x_0)=0\)and we can get the following iterative optimization equation<br>$$x=x_0 - \frac{f(x_0)}{f’(x_0)}$$</p>
-</li>
-<li><p>By employ the above equation, we can approximate the root of the function \(f(x)=0\) after sufficient iterations.  The <strong>Newton’s Method</strong> is graphically depicted in the picture below.<br><img src="/images/newton.png" alt="newton"> </p>
-</li>
-</ol>
-<h3 id="Newton’s-method-for-optimization"><a href="#Newton’s-method-for-optimization" class="headerlink" title="Newton’s method for optimization"></a>Newton’s method for optimization</h3><p>If we want to minimize a function, say \(f(x)\) instead of searching for the roots of the function. Intuitively, we can employ <strong>Newton’s Method</strong> on the gradient of the function \(f(x)\) since the minimum of the function \(f(x)\) is achieved when the gradient of the function equals to \(0\).</p>
-<ul>
-<li>We first get the second order <strong>Taylor Expansion</strong> of the function \(f(x)\) at the initial point \(x_0\). Suppose the function is multi-variant.</li>
-</ul>
-<p>$$f(x)=f(x_0)+\nabla f(x_0)(x-x_0)+ \frac{1}{2}(x-x_0)^T \nabla^2 f(x_0) (x-x_0)$$</p>
-<p>\(\nabla^2 f(x_0)\) is the <strong>Hessian Matrix</strong> or <strong>Fisher information matrix)</strong> of \(f(x)\) at \(x_0\). </p>
-<ul>
-<li>then  we need to apply <strong>Newton’s Method</strong> to find the root of \(\nabla f(x) =0\), which equals to the following :<br>$$\nabla f(x_0)+\nabla^2 f(x_0)(x-x_0)=0$$<br>Then , we can derive the iterative update equation as <strong> \(x_1=x_0 - \frac{\nabla f(x_0)}{\nabla^2 f(x_0)}\) </strong></li>
-</ul>
-<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a><strong>Discussion</strong></h3><h4 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h4><p>The convergence speed is way faster than <strong>Steepest Gradient Descent</strong>.</p>
-<h4 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><p>Need to compute the Hessian, which is rather compuation-intensive. Meanwhile, it relys on the second order Taylor expansion to approximate the original function. Thus, the scenario may happen where the quadratic approximation function.  </p>
+<h2 id="We-have-gone-through-a-few-optimization-methods-for-unconstrained-optimization-However-in-reality-tremendous-problems-in-real-life-are-factored-into-a-serires-of-constrained-optimization-problems-Therefore-in-this-post-I-will-mainly-introduce-a-widely-employed-method-in-various-machine-learning-algorithms"><a href="#We-have-gone-through-a-few-optimization-methods-for-unconstrained-optimization-However-in-reality-tremendous-problems-in-real-life-are-factored-into-a-serires-of-constrained-optimization-problems-Therefore-in-this-post-I-will-mainly-introduce-a-widely-employed-method-in-various-machine-learning-algorithms" class="headerlink" title="We have gone through a few optimization methods for unconstrained optimization. However, in reality, tremendous problems in real life are factored into a serires of constrained optimization problems. Therefore, in this post, I will mainly introduce a widely employed method in various machine learning algorithms."></a>We have gone through a few optimization methods for unconstrained optimization. However, in reality, tremendous problems in real life are factored into a serires of constrained optimization problems. Therefore, in this post, I will mainly introduce a widely employed method in various machine learning algorithms.</h2><h2 id="Langrange-Multiplier"><a href="#Langrange-Multiplier" class="headerlink" title="Langrange Multiplier"></a>Langrange Multiplier</h2><p>###Intrduction </p>
 
         </div>
         
@@ -365,10 +340,10 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-09T15:48:45+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-12T13:31:39+08:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>last updated at May 9, 2019</p>
+    <p>last updated at May 12, 2019</p>
   </a>
 </div>
 
@@ -388,7 +363,7 @@
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/05/07/optimization-2/&title=Optimization methods(2) | Chris&summary=">
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/05/12/Langrange/&title=Langrange Multipliers for Constrained Optimization | Chris&summary=">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
           
@@ -396,7 +371,7 @@
       
     
       
-        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2019/05/07/optimization-2/&title=Optimization methods(2) | Chris&summary=">
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2019/05/12/Langrange/&title=Langrange Multipliers for Constrained Optimization | Chris&summary=">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
           
@@ -404,7 +379,7 @@
       
     
       
-        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/05/07/optimization-2/&title=Optimization methods(2) | Chris&summary=">
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/05/12/Langrange/&title=Langrange Multipliers for Constrained Optimization | Chris&summary=">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
           
@@ -426,41 +401,17 @@
         
             <div class="prev-next">
                 
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
-                            <h4>
-                                <a href="/2019/05/07/Diary/" rel="prev" title="Diary">
-                                  
-                                      Diary
-                                  
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/diary-phd-life/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>diary, phd life</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
                 
                     <section class="next">
                         <span class="art-item-right" aria-hidden="true">
                             <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2019/05/07/gradient/" rel="prev" title="Optimization methods(1)">
+                                <a href="/2019/05/11/Proximal-policy-optimization/" rel="prev" title="Proximal_policy_optimization">
                                     
-                                        Optimization methods(1)
+                                        Proximal_policy_optimization
                                     
                                 </a>
                             </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/machine-learning-optimization/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>machine learning, optimization</a>
-                                </h6>
                             
                         </span>
                     </section>
@@ -541,7 +492,7 @@
 
   <script>
     window.subData = {
-      title: 'Optimization methods(2)',
+      title: 'Langrange Multipliers for Constrained Optimization',
       tools: true
     }
   </script>
@@ -609,7 +560,7 @@
 </header>
 
     <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Newton’s-method"><span class="toc-text">Newton’s method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deduction"><span class="toc-text">Deduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Newton’s-method-for-optimization"><span class="toc-text">Newton’s method for optimization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Discussion"><span class="toc-text">Discussion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Advantages"><span class="toc-text">Advantages</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Disadvantages"><span class="toc-text">Disadvantages</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#We-have-gone-through-a-few-optimization-methods-for-unconstrained-optimization-However-in-reality-tremendous-problems-in-real-life-are-factored-into-a-serires-of-constrained-optimization-problems-Therefore-in-this-post-I-will-mainly-introduce-a-widely-employed-method-in-various-machine-learning-algorithms"><span class="toc-text">We have gone through a few optimization methods for unconstrained optimization. However, in reality, tremendous problems in real life are factored into a serires of constrained optimization problems. Therefore, in this post, I will mainly introduce a widely employed method in various machine learning algorithms.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Langrange-Multiplier"><span class="toc-text">Langrange Multiplier</span></a></li></ol>
     </div>
   </section>
 
@@ -875,7 +826,7 @@
   <script>
     var disqus_shortname = 'chrisbyd';
     
-      var disqus_url = 'http://yoursite.com/2019/05/07/optimization-2/';
+      var disqus_url = 'http://yoursite.com/2019/05/12/Langrange/';
     
     (function(){
       var dsq = document.createElement('script');
