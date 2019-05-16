@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Langrange Multipliers for Constrained Optimization | Chris</title>
+  <title>Lagrange Multipliers for Constrained Optimization | Chris</title>
   
   
   <meta name="description" content="This is the place for chris to write down his daily feelings and some technical articles">
@@ -245,7 +245,7 @@
   
     <h1 class="title">
       <a href="/2019/05/12/Langrange/">
-        Langrange Multipliers for Constrained Optimization
+        Lagrange Multipliers for Constrained Optimization
       </a>
     </h1>
   
@@ -328,7 +328,21 @@
         <div class="article-entry" itemprop="articleBody">
           <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-<h2 id="We-have-gone-through-a-few-optimization-methods-for-unconstrained-optimization-However-in-reality-tremendous-problems-are-factored-into-series-of-constrained-optimization-problems-Therefore-in-this-post-I-will-mainly-introduce-a-widely-employed-method-in-various-machine-learning-algorithms-Langrange-multiplier"><a href="#We-have-gone-through-a-few-optimization-methods-for-unconstrained-optimization-However-in-reality-tremendous-problems-are-factored-into-series-of-constrained-optimization-problems-Therefore-in-this-post-I-will-mainly-introduce-a-widely-employed-method-in-various-machine-learning-algorithms-Langrange-multiplier" class="headerlink" title="We have gone through a few optimization methods for unconstrained optimization. However, in reality, tremendous problems are factored into series of constrained optimization problems. Therefore, in this post, I will mainly introduce a widely employed method in various machine learning algorithms - Langrange multiplier."></a>We have gone through a few optimization methods for unconstrained optimization. However, in reality, tremendous problems are factored into series of constrained optimization problems. Therefore, in this post, I will mainly introduce a widely employed method in various machine learning algorithms - <strong>Langrange multiplier</strong>.</h2><h2 id="Langrange-Multiplier"><a href="#Langrange-Multiplier" class="headerlink" title="Langrange Multiplier"></a>Langrange Multiplier</h2><p>###Intrduction </p>
+<p>We have gone through a few optimization methods for unconstrained optimization. However, in reality, tremendous problems are factored into series of constrained optimization problems. Therefore, in this post, I will mainly introduce a widely employed method in various machine learning algorithms - <strong>Langrange multiplier method</strong>.</p>
+<h2 id="Langrange-Multiplier"><a href="#Langrange-Multiplier" class="headerlink" title="Langrange Multiplier"></a>Langrange Multiplier</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><font color="red">Introduction</font></h3><p>Constrained optimization problems are generally expressed as:<br>Suppose $f(x)$, $c_i(x)$,$h_i(x)$ are continuously differentiable functions defined in $\mathbb{R^n}$ such that:<br>$$<br>\begin{align}<br>\min_{x\in \mathbb{R^n}} \; J=f(x) \\<br>s.t. c_i(x) \leq 0, i=1,2….,k \\<br>h_j(x) = 0, j=1,2,….,l<br>\end{align}<br>$$<br>To solve this kind of constrained optimization problem, back in high school, we would substitute the objective with the constraints to eliminate the constraints. This method can work well in simple scenarios, however, when the number of contraints goes up, this kind of methods will fail to derive a satisfactory solution. We introduce a new method here -<em>Lagarange method</em> to tackle this category of optimization problems.</p>
+<h3 id="Primal-problem"><a href="#Primal-problem" class="headerlink" title="Primal problem"></a><font color="green">Primal problem</font></h3><p>We first introduce the <em>generalized lagrange function</em>:<br>$$L(x,\alpha,\beta)=f(x)+\sum_{i=1}^k\alpha_i c_i(x) +\sum_{j=1}^l\beta_j h_j(x)$$<br>$\alpha_i$,$\beta_i$ are called <em>lagrange multipliers</em>, and for inequality constriants , we have $\alpha_i \geq 0$. Consider the following function:<br>$$\theta_P(x) =\max_{\alpha,\beta;\alpha_i \geq 0}L(x,\alpha,\beta)$$. The subscript $P$ means its the <strong>primal problem</strong>.<br>$$<br>\theta_P (x) =<br>\begin{cases}<br>+\infty &amp;\text{if constraints are violated} \\<br>f(x) &amp; \text{if the constraints are not violated}<br>\end{cases}<br>$$<br>Reasons are rather simple. Since if any constraits are not satisfied,e.g $c_i(x)\ge 0$, then we can have the corresponding multiplier $\alpha_i \to +\infty$ to maximize the <em>lagrange function</em> $L(X,\alpha,\beta)$.<br>Conversely, if all the constraints are satisfied, then the best we can do it to set all the <em>lagrange multipliers</em> to zero to maximize the lagrange function.Thus, $\theta_P(x)=f(x)$.<br>Consider the minimization problem :<br>$$\min_x\theta_P(x) = \min_x\max_{\alpha,\beta;\alpha_i \geq 0}L(x,\alpha,\beta)$$<br>Itis apparent that this altered optimization problem equals to the original optimization problem $\min f(x)$. Denote the optimum of the primal to be:<br>$$p^* =\min_x \theta_P (x)$$</p>
+<h3 id="Dual-problem"><a href="#Dual-problem" class="headerlink" title="Dual problem"></a><font color="green">Dual problem</font></h3><p>Define:<br>$$\theta_D = \min_xL(x,\alpha,\beta)$$<br>Consider the maximization problem :<br>$$\max_{\alpha,\beta;\alpha_i \geq 0}\theta_D(\alpha,\beta)= \max_{\alpha,\beta;\alpha_i \geq 0}\min_x L(x,\alpha,\beta)$$<br>$\max_{\alpha,\beta;\alpha_i \geq 0}\min_x L(x,\alpha,\beta)$ is frequently referred to as the maximization and minimization problem of <em>lagrange function</em>.<br>Rewrite the above problem into a constrained optimization problem as :</p>
+<p>$$<br>\begin{align}<br>\max_{\alpha,\beta} \theta_D(\alpha,\beta) =\max_{\alpha,\beta}\min_x L(x,\alpha,\beta) \\<br>s.t. \alpha_i \geq 0,i =1,2,..k<br>\end{align}<br>$$</p>
+<p>We refer to this problem as the <em>dual</em> problem of the original problem in the first paragraph. Define the optimum of the <strong>dual problem</strong> as :<br>$$d^* = \max_{\alpha,\beta;\alpha_i \geq 0} \theta_D (\alpha,\beta)$$</p>
+<h3 id="Weak-duality-theorem"><a href="#Weak-duality-theorem" class="headerlink" title="Weak duality theorem"></a><font color="green">Weak duality theorem</font></h3><p>Description:<br>If both the <em>primal</em> and <em>dual</em> have optimum, then</p>
+<p>$$<br>\begin{align}<br>d^\ast =\max_{\alpha,\beta;\alpha_i \geq 0} \min_x L(x,\alpha,\beta) \\<br>\leq \min_x \max_{\alpha,\beta;\alpha_i \geq 0}L(x,\alpha,\beta) = p^\ast<br>\end{align}<br>$$ </p>
+<p><strong>Proof</strong><br>It is apparent that<br>$$\theta_D(\alpha,\beta) = \min_x L(x,\alpha,\beta) \leq L(x,\alpha,\beta) \leq \max_{\alpha,beta;a_i\geq 0} L(x,\alpha,\beta) =\theta_P(x)$$</p>
+<p>So:<br>$$\theta_D(x)\leq \theta_P(x)$$</p>
+<p>Therefore, we can also derive that:<br>$$\max_{\alpha,beta;a_i\geq 0}\theta_D(\alpha,\beta) \leq \min_x \theta_P(x)$$<br>which have proven our hypothesis:<br>$$d^\ast \leq p^\ast$$</p>
+<h3 id="Karush-Kuhn-Tucker-kkt-conditions"><a href="#Karush-Kuhn-Tucker-kkt-conditions" class="headerlink" title="Karush-Kuhn-Tucker(kkt) conditions"></a><font color="green">Karush-Kuhn-Tucker(kkt) conditions</font></h3><p>In the above paragraph, we introduced the weak duality theorem. Some might ask when will the equality holds which means $d^* = p^x$. In this section, we will introduce another theorem to elaborate on this case.</p>
+<p><font color="red"><strong>Theorem 1</strong></font><br>Consider the <em>primal</em> and <em>dual</em> function. Suppose $f(x)$ and $c_i(x)$ are convex and $c_i(x)$ are strictly feasible. Then, there exits $x^\ast$, $\alpha^\ast$ and $\beta^\ast $ so that $x^\ast $ is the solution of the primal,$\alpha^\ast,\beta^\ast$ are the solution to the dual and </p>
+<p>$$p^\ast =d^\ast =L(x^\ast,\alpha^\ast,\beta^\ast )$$</p>
+<p><font color="red"><strong>Theorem 2- KKT condition</strong></font><br>The necessary and sufficient condition under which $x^\ast,\alpha^\ast,\beta^x$ are the optimum of the primal and dual respectively is stated below :<br>$$<br>\begin{align}<br>\nabla_x L(x^\ast,\alpha^\ast,\beta^\ast) =0\\<br>\nabla_\alpha L(x^\ast,\alpha^\ast,\beta^\ast) =0 \\<br>\nabla_\beta L(x^\ast,\alpha^\ast,\beta^\ast) =0 \\<br>\alpha_i^\ast(x^\ast) = 0, i=1,2,….k \\<br>c_i(x^\ast) \leq 0, i=1,2,…,k \\<br>\alpha_i^\ast \geq 0, i=1,2,…,k \\<br>h_j(x^\ast) = 0 j=1,2,….,l<br>\end{align}<br>$$</p>
 
         </div>
         
@@ -340,10 +354,10 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-12T22:31:13+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-16T13:17:39+08:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>last updated at May 12, 2019</p>
+    <p>last updated at May 16, 2019</p>
   </a>
 </div>
 
@@ -363,7 +377,7 @@
   <div class="-mob-share-list share-body">
     
       
-        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/05/12/Langrange/&title=Langrange Multipliers for Constrained Optimization | Chris&summary=">
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/05/12/Langrange/&title=Lagrange Multipliers for Constrained Optimization | Chris&summary=">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
           
@@ -371,7 +385,7 @@
       
     
       
-        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2019/05/12/Langrange/&title=Langrange Multipliers for Constrained Optimization | Chris&summary=">
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2019/05/12/Langrange/&title=Lagrange Multipliers for Constrained Optimization | Chris&summary=">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
           
@@ -379,7 +393,7 @@
       
     
       
-        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/05/12/Langrange/&title=Langrange Multipliers for Constrained Optimization | Chris&summary=">
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/05/12/Langrange/&title=Lagrange Multipliers for Constrained Optimization | Chris&summary=">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
           
@@ -492,7 +506,7 @@
 
   <script>
     window.subData = {
-      title: 'Langrange Multipliers for Constrained Optimization',
+      title: 'Lagrange Multipliers for Constrained Optimization',
       tools: true
     }
   </script>
@@ -560,7 +574,7 @@
 </header>
 
     <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#We-have-gone-through-a-few-optimization-methods-for-unconstrained-optimization-However-in-reality-tremendous-problems-are-factored-into-series-of-constrained-optimization-problems-Therefore-in-this-post-I-will-mainly-introduce-a-widely-employed-method-in-various-machine-learning-algorithms-Langrange-multiplier"><span class="toc-text">We have gone through a few optimization methods for unconstrained optimization. However, in reality, tremendous problems are factored into series of constrained optimization problems. Therefore, in this post, I will mainly introduce a widely employed method in various machine learning algorithms - Langrange multiplier.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Langrange-Multiplier"><span class="toc-text">Langrange Multiplier</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Langrange-Multiplier"><span class="toc-text">Langrange Multiplier</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Primal-problem"><span class="toc-text">Primal problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dual-problem"><span class="toc-text">Dual problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Weak-duality-theorem"><span class="toc-text">Weak duality theorem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Karush-Kuhn-Tucker-kkt-conditions"><span class="toc-text">Karush-Kuhn-Tucker(kkt) conditions</span></a></li></ol></li></ol>
     </div>
   </section>
 

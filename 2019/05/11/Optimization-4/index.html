@@ -338,8 +338,22 @@
 <p>$$<br>\begin{align}<br>\nabla^2 f(x_k)d_k +wd_k = -\nabla f(x_k) \\<br>w(d_k- r_k) =0  \\<br>w \geq 0 \\<br>||d_k|| \leq r_k  \\<br>\end{align}<br>$$</p>
 <p>Suppose $\nabla^2 f(x_k)+wI$ is non-singular(it has inverse),then we have:<br>$$||d_k||=||(\nabla^2 f(x_k)+wI)^{-1}\nabla f(x_k)||$$<br>Based on the above deduction, it is apparent that $d_k$ is closely related to the value of radius $r_k$. </p>
 <ul>
-<li>If $r_k$ is large enough, $w$ could be pretty small so that $d_k$ approximates the direction of <em>newton’s method</em>:<br>$$ d_k \approx -\nabla^2 f(x_k)^{-1}\nabla f(x_k)$$<br>_ If $r_k \to 0$, then $||d_k|| \to 0$, $w \to \infty$. $d_k$ approximates the direction ofsteepest gradient descent:<br>$$ d_k \approx -\frac{1}{w}\nabla f(x_k)$$<br>When we have computed the optimum $d_k$ based on the above equations, we need to  </li>
+<li>If $r_k$ is large enough, $w$ could be pretty small so that $d_k$ approximates the direction of <em>newton’s method</em>:<br>$$ d_k \approx -\nabla^2 f(x_k)^{-1}\nabla f(x_k)$$</li>
 </ul>
+<p>_ If $r_k \to 0$, then $||d_k|| \to 0$, $w \to \infty$. $d_k$ approximates the direction ofsteepest gradient descent:<br>$$ d_k \approx -\frac{1}{w}\nabla f(x_k)$$<br>When we have computed the optimum $d_k$ based on the above equations, we need to determine wether or not the approximation function $\phi (x_k+d)$ accurately approximates $f(x_k +d)$. We apply the following equation:<br>$$\rho =\frac{f(x_k)-f(x_k+d_k)}{f(x_k)-\phi (d_k)}$$</p>
+<p>.If $\rho \leq \mu$, then it did not successfully approximate the original function so that the next point we arrive will still be $x_{k+1}=x_k$. On the other hand, if $\rho \ge \mu$, then the next point we get is $x_{k+1} =x_k +d_k$.  </p>
+<h3 id="Algorithm-description"><a href="#Algorithm-description" class="headerlink" title="Algorithm description"></a><font color="red"><strong>Algorithm description</strong></font></h3><ol>
+<li>Initialize a start point $x_k$, the trust region radius $r_k$, $0 \le \mu \le \eta \le 1$ and the accuracy $\epsilon$. Initialize $k:=1$</li>
+<li>Compute $f(x_k)$,$\nabla f(x_k)$. If $||\nabla f(x_k)|| \leq \epsilon$, then stop the process. Else, compute $\nabla^2 f(x_k)$.</li>
+<li><p>Solve </p>
+<p>$$<br>\begin{align}<br>min\; \phi (d)= f(x_k) +\nabla f(x_k)^Td +\frac{1}{2}d^T\nabla^2 d \\<br>s.t. ||d|| \leq r_k<br>\end{align}<br>$$</p>
+<p>and get the optimum solution $d_k$. Compute $\rho$ with the following equation:<br>$$<br>\rho_k =\frac{f(x_k)-f(x_k+d_k)}{f(x_k)-\phi (d_k)}<br>$$ </p>
+</li>
+<li><p>If $\rho \leq \mu$, we set $x_{k+1} =x_k$. If nor, we have $x_{k+1}=x_k+d_k$.</p>
+</li>
+<li>Modify $r_k$ . If $\rho_k \leq \mu$, set $r_{k+1}=1/2 r_k$. If $\mu \le \rho_k \le \eta$, set $r_{k+1}=r_k$. If $\rho_k \geq \eta$, then set $r_{k+1} =2r_k$.</li>
+<li>Set $k:=k+1$, go to the second procedure.</li>
+</ol>
 
         </div>
         
@@ -351,7 +365,7 @@
     <div class="new-meta-box">
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-15T10:00:10+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-05-15T10:46:53+08:00">
   <a class="notlink">
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>last updated at May 15, 2019</p>
@@ -590,7 +604,7 @@
 </header>
 
     <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#To-address-this-problem-we-will-introduce-trust-region-method-in-this-post"><span class="toc-text">To address this problem, we will introduce trust region method in this post.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trust-region-methods"><span class="toc-text">Trust region methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deduction"><span class="toc-text">Deduction</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#To-address-this-problem-we-will-introduce-trust-region-method-in-this-post"><span class="toc-text">To address this problem, we will introduce trust region method in this post.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trust-region-methods"><span class="toc-text">Trust region methods</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deduction"><span class="toc-text">Deduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Algorithm-description"><span class="toc-text">Algorithm description</span></a></li></ol></li></ol>
     </div>
   </section>
 
