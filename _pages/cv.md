@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -29,11 +29,14 @@ Work experience
 Skills
 ======
 * C, Java, Latex, Pytorch
-* S
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Machine Learning
+  * basic statistical machine learning algorithms.
+  * deep reinforcement learning.
+  * basic deep learning models (CNN, RNN, LSTM, GAN, Vision Transformer)
+* Computer Vision
+  * image prcessing (segmentation, classification, etc.)
+  *  image generation, style transfer
+  *  \textbf{image retrieval, vehicle re-identification, person re-identification }
 
 Publications
 ======
