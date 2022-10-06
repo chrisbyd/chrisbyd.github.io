@@ -36,7 +36,7 @@ Skills
 * Computer Vision
   * image prcessing (segmentation, classification, etc.)
   *  image generation, style transfer
-  *  \textbf{image retrieval, vehicle re-identification, person re-identification }
+  *  image retrieval, vehicle re-identification, person re-identification 
 
 Publications
 ======
@@ -58,6 +58,6 @@ Teaching
    -->
 Service 
 ======
-* Feb 2021 Reviewer for IEEE International Conference on Multimedia and Expo } (ICME 2021), shenzhen, China \\
-* Feb 2022 Reviewer for IEEE International Conference on Multimedia and Expo } (ICME 2022), taipei , China \\
+* Feb 2021 Reviewer for IEEE International Conference on Multimedia and Expo } (ICME 2021), shenzhen, China 
+* Feb 2022 Reviewer for IEEE International Conference on Multimedia and Expo } (ICME 2022), taipei , China 
 
