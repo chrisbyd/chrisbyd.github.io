@@ -7,11 +7,11 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Your Name / Site Title"
+title                    : "chris's website"
 title_separator          : "-"
-name                     : &name "Your Name"
-description              : &description "personal description"
-url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+name                     : &name "chen yongbiao"
+description              : &description " I am currently a  PhD Student at Electronic Information and Electrical Engineering, Shanghai Jiao Tong University, China. I have been doing research on large-scale image retrieval algorithms and applications.My Ph.D research work covers a wide range of computer vision, with a primary focus on \textbf{large-scale efficient image retrieval, person re-identification, vehicle re-identification, transfer learning, contrastive learning }. Currently, I am interesting in deep learning (CNN, GAN, Vision Transformer, etc.) and their applications to computer vision (image processing, video analysis, etc.).  My recent research focus is the application of vision transfer (ViT) in deep hashing for image retrieval and in cross-modal retrieval."
+url                      : https://chrisbyd.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "academicpages/academicpages.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -40,7 +40,7 @@ staticman:
   path                   : "_data/comments/{options.slug}"
   requiredFields         : ['name', 'email', 'message']
   transforms:
-    email                : "md5"
+    email                : "chenyongbiao0319@sjtu.edu.cn"
   generatedFields:
     date:
       type               : "date"
@@ -80,36 +80,36 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Sidebar Name"
+  name             : "Yongbiao Chen"
   avatar           : "profile.png"
   bio              : "Your biography for the left-hand sidebar"
-  location         : "Location"
+  location         : "Shanghai"
   employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "http://yourfullgooglescholarurl.com"
-  email            :
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
-  uri              :
+  googlescholar    : "https://scholar.google.com/citations?user=ze0T10EAAAAJ&hl=en&oi=ao"
+  email            : "chenyongbiao0319@sjtu.edu.cn"
+  researchgate     : "https://www.researchgate.net/scientific-contributions/Yongbiao-Chen-2175795039"
+  uri              : 
   bitbucket        :
   codepen          :
   dribbble         :
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
+  github           : "https://github.com/chrisbyd"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
   linkedin         :
-  orcid            : "http://orcid.org/yourorcidurl"
+  orcid            : "https://orcid.org/0000-0002-7727-5489"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          : #"replacethistwitterhandle"
   vine             :
   weibo            :
   xing             :

@@ -1,10 +1,10 @@
 # Authors
 
 Name Name:
-  name        : "Name Name"
-  uri         : "http://name.com"
-  email       : "name@name.com"
-  bio         : "This is the first name."
+  name        : "Yongbiao Chen"
+  uri         : "http://chrisbyd.github.io"
+  email       : "chenyongbiao0319@sjtu.edu.cn"
+  bio         : "I am currently a  PhD candidate at Electronic Information and Electrical Engineering, Shanghai Jiao Tong University, China. I have been conducting research on large-scale image retrieval algorithms and applications. My Ph.D research work covers a wide range of computer vision, with a primary focus on \textbf{large-scale efficient image retrieval, person re-identification, vehicle re-identification, transfer learning, contrastive learning }. Currently, I am interesting in deep learning (CNN, GAN, Vision Transformer, etc.) and their applications to computer vision (image processing, video analysis, etc.).  My recent research focus is the application of vision transfer (ViT) in deep hashing for image retrieval and in cross-modal retrieval."
   avatar      : "bio-photo-2.jpg"
   twitter     : "name"
   google_plus : "Name"
