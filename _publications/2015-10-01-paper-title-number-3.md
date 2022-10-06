@@ -1,15 +1,13 @@
 ---
-title: "Paper Title Number 3"
+title: "Supervised Contrastive Vehicle Quantization for Efficient Vehicle Retrieval"
 collection: publications
 permalink: /publication/2015-10-01-paper-title-number-3
-excerpt: 'This paper is about the number 3. The number 4 is left for future work.'
-date: 2015-10-01
-venue: 'Journal 1'
-paperurl: 'http://academicpages.github.io/files/paper3.pdf'
-citation: 'Your Name, You. (2015). &quot;Paper Title Number 3.&quot; <i>Journal 1</i>. 1(3).'
+excerpt: 'This paper proposes a product quantization framework for efficient large-scale vehicle re-identification'
+date: 2022-06-01
+venue: 'International Conference on Multimedia Retrieval (ICMR)'
+paperurl: 'http://chrisbyd.github.io/files/SCVQ.pdf'
+citation: 'Chen, Y., Guo, K., Liu, F., Huang, Y. and Qi, Z., 2022, June. Supervised Contrastive Vehicle Quantization for Efficient Vehicle Retrieval. In Proceedings of the 2022 International Conference on Multimedia Retrieval (pp. 44-48).'
 ---
-This paper is about the number 3. The number 4 is left for future work.
 
-[Download paper here](http://academicpages.github.io/files/paper3.pdf)
 
-Recommended citation: Your Name, You. (2015). "Paper Title Number 3." <i>Journal 1</i>. 1(3).
+[Download paper here](http://chrisbyd.github.io/files/SCVQ.pdf)

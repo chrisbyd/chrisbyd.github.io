@@ -1,15 +1,13 @@
 ---
-title: "Paper Title Number 2"
+title: " Transhash: Transformer-based hamming hashing for efficient image retrieval"
 collection: publications
 permalink: /publication/2010-10-01-paper-title-number-2
-excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
-date: 2010-10-01
-venue: 'Journal 1'
-paperurl: 'http://academicpages.github.io/files/paper2.pdf'
-citation: 'Your Name, You. (2010). &quot;Paper Title Number 2.&quot; <i>Journal 1</i>. 1(2).'
+excerpt: 'It proposes the first vision transformer based deep hashing framework for large-scale image retrieval.'
+date: 2022-06-01
+venue: 'International Conference on Multimedia Retrieval (ICMR)'
+paperurl: 'http://chrisbyd.github.io/files/TransHash.pdf'
+citation: 'Chen, Y., Zhang, S., Liu, F., Chang, Z., Ye, M. and Qi, Z., 2022, June. Transhash: Transformer-based hamming hashing for efficient image retrieval. In Proceedings of the 2022 International Conference on Multimedia Retrieval (pp. 127-136).'
 ---
-This paper is about the number 2. The number 3 is left for future work.
 
-[Download paper here](http://academicpages.github.io/files/paper2.pdf)
 
-Recommended citation: Your Name, You. (2010). "Paper Title Number 2." <i>Journal 1</i>. 1(2).
+[Download paper here](http://chrisbyd.github.io/files/TransHash.pdf)
