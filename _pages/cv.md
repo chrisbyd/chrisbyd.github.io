@@ -55,6 +55,6 @@ Teaching
    -->
 Service 
 ======
-* Feb 2021 & \textbf{Reviewer} for \textit{IEEE International Conference on Multimedia and Expo } (ICME 2021), shenzhen, China \\
-* Feb 2022 & \textbf{Reviewer} for \textit{IEEE International Conference on Multimedia and Expo } (ICME 2022), taipei , China \\
+* Feb 2021 Reviewer for IEEE International Conference on Multimedia and Expo } (ICME 2021), shenzhen, China \\
+* Feb 2022 Reviewer for IEEE International Conference on Multimedia and Expo } (ICME 2022), taipei , China \\
 
