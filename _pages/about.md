@@ -11,14 +11,16 @@ redirect_from:
 
 All about me
 ======
- I am currently a  PhD candidate at Electronic Information and Electrical Engineering, Shanghai Jiao Tong University, China. I have been conducting research on large-scale image retrieval algorithms and applications.
+ I am currently a  PhD candidate at Electronic Information and Electrical Engineering, Shanghai Jiao Tong University, China. I have been conducting research on large-scale image retrieval algorithms and applications under the supervision of Prof. Zhengwei Qi.
     
 
 My research Interests
 ======
 
-My Ph.D research work covers a wide range of computer vision, with a primary focus on \textbf{large-scale efficient image retrieval, 
-person re-identification, vehicle re-identification, transfer learning, contrastive learning }. Currently, I am interesting in deep learning (CNN, GAN, Vision Transformer, etc.) and their applications to computer vision (image processing, video analysis, etc.).  My recent research focus is the application of vision transfer (ViT) in deep hashing for uni-modal image retrieval and  cross-modal image retrieval.
+My Ph.D research work covers a wide range of computer vision, with a primary focus on **large-scale efficient image retrieval, 
+person re-identification, vehicle re-identification, transfer learning, contrastive learning **. Currently, I am interesting in deep learning (CNN, GAN, Vision Transformer, etc.) and their applications to computer vision (image processing, video analysis, etc.).  My recent research focus is the application of vision transfer (ViT) in deep hashing for uni-modal image retrieval and  cross-modal image retrieval.
+![Weight lifting](/images/img1.png)
+![Weight lifting](/images/img2.png)
 
 My hobbies
 ------
