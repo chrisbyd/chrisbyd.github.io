@@ -19,8 +19,8 @@ My research Interests
 
 My Ph.D research work covers a wide range of computer vision, with a primary focus on **large-scale efficient image retrieval, 
 person re-identification, vehicle re-identification, transfer learning, contrastive learning **. Currently, I am interesting in deep learning (CNN, GAN, Vision Transformer, etc.) and their applications to computer vision (image processing, video analysis, etc.).  My recent research focus is the application of vision transfer (ViT) in deep hashing for uni-modal image retrieval and  cross-modal image retrieval.
-![Weight lifting](/images/img1.png)
-![Weight lifting](/images/img2.png)
+![Weight lifting](/images/img1.jpg)
+![Weight lifting](/images/img2.jpg)
 
 My hobbies
 ------
