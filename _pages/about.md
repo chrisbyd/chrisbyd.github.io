@@ -18,9 +18,8 @@ My research Interests
 ======
 
 My Ph.D research work covers a wide range of computer vision, with a primary focus on **large-scale efficient image retrieval, 
-person re-identification, vehicle re-identification, transfer learning, contrastive learning **. Currently, I am interesting in deep learning (CNN, GAN, Vision Transformer, etc.) and their applications to computer vision (image processing, video analysis, etc.).  My recent research focus is the application of vision transfer (ViT) in deep hashing for uni-modal image retrieval and  cross-modal image retrieval.
-![Weight lifting](/images/img1.jpg)
-![Weight lifting](/images/img2.jpg)
+person re-identification, vehicle re-identification, transfer learning, contrastive learning**. Currently, I am interesting in deep learning (CNN, GAN, Vision Transformer, etc.) and their applications to computer vision (image processing, video analysis, etc.).  My recent research focus is the application of vision transfer (ViT) in deep hashing for uni-modal image retrieval and  cross-modal image retrieval.
+
 
 My hobbies
 ------
@@ -29,3 +28,5 @@ I am a sports person. Playing sports is the way for me to let off some steam whe
 Currently, I am fascinated by the beauty of tennis. Honestly, learning to play tennis is a little bit daunting in the first place. Some of the amateur players even 
 spent several months on the court but still could not catch a single ball. This kind of relates to the my own experience of conducting research. 
 Below is a short video of me playing tennis with the coach.
+![Weight lifting](/images/img1.jpg)
+![Weight lifting](/images/img2.jpg)
