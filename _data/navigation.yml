@@ -10,7 +10,7 @@ main:
   #   url: /teaching/    
     
   - title: "Projects"
-    url: /Projects/
+    url: /project/
         
   - title: "News"
     url: /year-archive/
@@ -18,5 +18,5 @@ main:
   - title: "CV"
     url: /cv/
     
-  - title: "Guide"
-    url: /markdown/
+  # - title: "Guide"
+  #   url: /markdown/
